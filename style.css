@@ -1,0 +1,164 @@
+/* General body styling with background image */
+body {
+  font-family: "Arial", sans-serif;
+  background: url("clock1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333; /* Default text color */
+  margin: 0;
+}
+
+/* Main container styling */
+.container {
+  width: 500px; /* Larger width */
+  padding: 40px;
+  background-color: white; /* White box */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Heading styling */
+.heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000080; /* Navy blue heading */
+}
+
+/* Custom time input section */
+.custom-time {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Add spacing between input and button */
+}
+
+.custom-time input {
+  padding: 8px;
+  width: 150px; /* Wider input box */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.custom-time button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #56ccf2; /* Light blue button */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-time button:hover {
+  background-color: #45a049; /* Green hover */
+}
+
+/* Timer dial styling */
+.timer-dial {
+  position: relative;
+  width: 300px; /* Larger dial */
+  height: 300px;
+  border-radius: 50%;
+  border: 8px solid white; /* Thick white border */
+  background: conic-gradient(blue 0%, #f1f1f1 0%); /* Navy blue gradient */
+  margin: 20px auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: bold;
+  color: #000080; /* Navy blue for better visibility */
+}
+
+/* Controls section */
+.controls {
+  display: flex;
+  justify-content: center; /* Center align the buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  gap: 15px; /* Add spacing between buttons */
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50; /* Fresh green */
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+#pause {
+  background-color: #ff9800; /* Fresh orange */
+}
+
+#reset {
+  background-color: #f44336; /* Fresh red */
+}
+
+#lap {
+  background-color: #2196f3; /* Fresh blue */
+}
+
+/* Lap records section */
+.lap-records {
+  margin-top: 30px;
+}
+
+.lap-records h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #000080; /* Navy blue for headings */
+}
+
+#lap-times {
+  list-style: none;
+  padding-left: 0;
+}
+
+#lap-times li {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Paused time display */
+.paused-time {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #000080; /* Navy blue for clarity */
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#time {
+  animation: fadeIn 1s ease-in-out;
+}
