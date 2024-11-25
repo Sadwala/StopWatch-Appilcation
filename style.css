@@ -64,15 +64,17 @@ body {
 /* Timer dial styling */
 .timer-dial {
   position: relative;
-  width: 300px; /* Larger dial */
+  width: 300px;
   height: 300px;
   border-radius: 50%;
-  border: 8px solid white; /* Thick white border */
-  background: conic-gradient(blue 0%, #f1f1f1 0%); /* Navy blue gradient */
+  border: 8px solid white;
+  background: white; /* Default color is white */
   margin: 20px auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.5s ease-in-out; /* Smooth transition */
 }
 
+/* Time display styling */
 .time {
   position: absolute;
   top: 50%;
@@ -80,7 +82,7 @@ body {
   transform: translate(-50%, -50%);
   font-size: 36px;
   font-weight: bold;
-  color: #000080; /* Navy blue for better visibility */
+  color: black;
 }
 
 /* Controls section */
@@ -97,7 +99,7 @@ body {
   font-size: 16px;
   border: none;
   border-radius: 8px;
-  background-color: #4caf50; /* Fresh green */
+  background-color: grey; /* Fresh green */
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,7 +148,7 @@ body {
 .paused-time {
   margin-top: 20px;
   font-size: 18px;
-  color: #000080; /* Navy blue for clarity */
+  color: grey; /* Navy blue for clarity */
 }
 
 /* Smooth fade-in animation */

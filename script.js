@@ -12,6 +12,11 @@ function startStopwatch() {
     isRunning = true;
     startTime = Date.now() - pausedTime;
     interval = setInterval(updateTime, 1000); // Update every second
+
+    // Change the dial to grey when running
+    const timerDial = document.querySelector(".timer-dial");
+    timerDial.style.background = "grey";
+
     tickSound.play(); // Start ticking sound
     document.getElementById("start").disabled = true;
     document.getElementById("pause").disabled = false;
@@ -25,6 +30,11 @@ function pauseStopwatch() {
     clearInterval(interval);
     isRunning = false;
     pausedTime = Date.now() - startTime;
+
+    // Reset the dial color to white when paused
+    const timerDial = document.querySelector(".timer-dial");
+    timerDial.style.background = "white";
+
     tickSound.pause(); // Pause ticking sound
     tickSound.currentTime = 0; // Reset sound to start
     document.getElementById("start").disabled = false;
@@ -38,6 +48,11 @@ function resetStopwatch() {
   isRunning = false;
   elapsedTime = 0;
   pausedTime = 0;
+
+  // Reset dial color to white
+  const timerDial = document.querySelector(".timer-dial");
+  timerDial.style.background = "white";
+
   document.getElementById("time").textContent = "00:00:00";
   tickSound.pause(); // Pause ticking sound
   tickSound.currentTime = 0; // Reset sound to start
@@ -50,42 +65,21 @@ function resetStopwatch() {
 function updateTime() {
   elapsedTime = Date.now() - startTime;
   document.getElementById("time").textContent = formatTime(elapsedTime);
-  const percentage = (elapsedTime / 1000) * 360; // Update the dial's progress
-  document.querySelector(
-    ".timer-dial"
-  ).style.background = `conic-gradient(blue ${percentage}deg, #f1f1f1 0deg)`;
+
+  // No conic-gradient applied here. Dial remains static grey while running.
 }
 
-// Format the time (milliseconds to mm:ss:SSS)
+// Format the time (milliseconds to mm:ss)
 function formatTime(ms) {
-  const date = new Date(ms);
-  return date.toISOString().substr(14, 5); // "mm:ss"
+  const minutes = Math.floor(ms / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+    2,
+    "0"
+  )}`;
 }
 
-// Record lap time
-function recordLap() {
-  if (isRunning) {
-    const lapTime = formatTime(elapsedTime + pausedTime);
-    const lapItem = document.createElement("li");
-    lapItem.textContent = `Lap ${lapCount}: ${lapTime}`;
-    document.getElementById("lap-times").appendChild(lapItem);
-    lapCount++;
-  }
-}
-
-// Set custom time
-function setCustomTime() {
-  const customDuration =
-    parseInt(document.getElementById("custom-time").value) * 1000; // Convert to milliseconds
-  if (customDuration > 0) {
-    elapsedTime = customDuration;
-    document.getElementById("time").textContent = formatTime(elapsedTime);
-  }
-}
-
-// Event listeners
+// Event listeners for buttons
 document.getElementById("start").addEventListener("click", startStopwatch);
 document.getElementById("pause").addEventListener("click", pauseStopwatch);
 document.getElementById("reset").addEventListener("click", resetStopwatch);
-document.getElementById("lap").addEventListener("click", recordLap);
-document.getElementById("setTime").addEventListener("click", setCustomTime);
