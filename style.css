@@ -1,7 +1,7 @@
 /* General body styling with background image */
 body {
   font-family: "Arial", sans-serif;
-  background: url("clock1.jpg") no-repeat center center fixed;
+  background: url("clock a.jpg") no-repeat center center fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
